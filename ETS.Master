@@ -1,0 +1,175 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="ETS.master.cs" Inherits="EffortTrackingSystem.ETS" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>ETS</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+    <style type="text/css">
+        .style2
+        {
+            width: 129px;
+        }
+        .style3
+        {
+            width: 72px;
+        }
+        .style4
+        {
+            width: 72px;
+            height: 36px;
+        }
+        .style5
+        {
+            width: 129px;
+            height: 36px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="logo">
+        <h1 style="font-size: 50px; font-family: 'Copperplate Gothic Light'; text-transform: uppercase; font-weight: bolder;">
+            Effort Tracking System
+        </h1>
+        
+    </div>
+    <hr />
+    <!-- end #logo -->
+    <div id="splash">
+        <div class="col1">
+            <img src="images/img01.jpg" width="660" height="300" alt="" /></div>
+        <div class="col2">
+            <blockquote style="font-family: 'Arial Unicode MS'; font-weight: bold;">
+             For every disciplined effort there is a multiple reward.
+ 
+</blockquote>
+        </div>
+    </div>
+    <div id="header">
+        <div id="menu" 
+            style="font-family: 'Arial Unicode MS'; font-weight: bold; text-transform: capitalize">
+            <ul>
+                <li class="current_page_item"> <a href="Home.aspx" 
+                        style="font-family: 'Arial Unicode MS'; font-weight: bold; text-transform: capitalize">Home</a> </li>
+                <li><a href="About.aspx" 
+                        style="font-family: 'Arial Unicode MS'; font-weight: bold; text-transform: capitalize">About</a></li>
+                <li><a href="Contact.aspx" 
+                        style="font-family: 'Arial Unicode MS'; font-weight: bold; text-transform: capitalize">Contact</a></li>
+                <li>
+                    <asp:LinkButton ID="lnkLogin" runat="server" Text="Login" Visible="false" 
+                        CausesValidation="false" Font-Bold="True" Font-Names="Arial Unicode MS"></asp:LinkButton></li>
+                <li>
+                    <asp:LinkButton ID="lnkLogout" runat="server" Text="Logout" Visible="false" 
+                        OnClick="lnkLogout_Click" Font-Bold="True" Font-Names="Arial Unicode MS"></asp:LinkButton></li>
+            </ul>
+        </div>
+        <!-- end #menu -->
+        <%--	<div id="search">
+			<form method="get" action="">
+				<fieldset>
+				<input type="text" name="s" id="search-text" size="15" />
+				<input type="submit" id="search-submit" value="" />
+				</fieldset>
+			</form>
+		</div>--%>
+        <!-- end #search -->
+    </div>
+    <!-- end #header -->
+    <!-- end #header-wrapper -->
+    <div id="page">
+        <div id="content">
+            <div class="post">             
+                <div class="entry">
+                    <aj1:ToolkitScriptManager runat="server">
+                    </aj1:ToolkitScriptManager>               
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- end #content -->
+        <div id="sidebar">
+            <ul>
+                <asp:Panel ID="pnlLogin" runat="server">
+                    <li style="font-family: 'Arial Unicode MS'; text-transform: capitalize; color: #CCCCCC;">
+                        <table style="height: 154px">
+                            <tr>
+                                <td class="style3">
+                                    <label style="font-weight: bold">
+                                        Username</label>
+                                </td>
+                                <td class="style2">
+                                    <asp:TextBox ID="txtemail" runat="server" class="input_field"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please Enter UserName"
+                                        ControlToValidate="txtemail" Text="*"></asp:RequiredFieldValidator>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="style4">
+                                    <label style="font-weight: bold">
+                                        Password</label>
+                                </td>
+                                <td class="style5">
+                                    <asp:TextBox ID="txtpassword" TextMode="Password" runat="server" class="input_field"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Please Enter Password"
+                                        ControlToValidate="txtpassword" Text="*"></asp:RequiredFieldValidator>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="center">
+                                    <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" 
+                                        Font-Bold="True" Font-Names="Arial Unicode MS" Width="63px" />
+                                    <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="true"
+                                        ShowSummary="false" />
+                                </td>
+                            </tr>
+                        </table>
+                    </li>
+                </asp:Panel>
+                <asp:Panel ID="pnladmin" runat="server" Visible="false">
+                    <li style="font-family: 'Arial Unicode MS'; text-transform: capitalize; color: #CCCCCC;">
+                        <h2 style="text-transform: capitalize">
+                           You Can
+                        </h2>
+                        <ul>
+                            <li><a href="ManageDept.aspx" style="color: #CCCCCC">Manage Department</a> </li>
+                            <li><a href="ManageTask.aspx" style="color: #CCCCCC">Manage Task</a></li>
+                            <li><a href="ManageEmployee.aspx" style="color: #CCCCCC">Manage Employee</a></li>
+                            <li><a href="AssignTask.aspx" 
+                                    style="color: #CCCCCC; font-family: 'Arial Unicode MS';">Assign Task</a></li>
+                            <li><a href="ManageUsrTime.aspx" 
+                                    style="font-family: 'Arial Unicode MS'; color: #CCCCCC;">Manage User Timings</a></li>
+                        </ul>
+                    </li>
+                </asp:Panel>
+                <asp:Panel ID="pnluser" runat="server" Visible="false">
+                    <li>
+                        <h2 style="text-transform: capitalize">
+                            You Can</h2>
+                        <ul>
+                            <li style="color: #CCCCCC"><a href="EmpWorkingHrs.aspx" 
+                                    style="font-family: 'Arial Unicode MS'; color: #CCCCCC;">Manage Working Hours</a> </li>
+                            <li><a href="ViewPayroll.aspx" style="color: #CCCCCC">View Payroll</a> </li>
+                    
+                        </ul>
+                    </li>
+                </asp:Panel>
+            </ul>
+        </div>
+        <!-- end #sidebar -->
+        <div style="clear: both;">
+            &nbsp;</div>
+    </div>
+    <!-- end #page -->
+    <div id="footer">
+        <p style="font-family: 'Arial Unicode MS'; color: #C0C0C0">
+            Copyright (c) 2011 Reseverd</form>
+</body>
+</html>
